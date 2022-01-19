@@ -6,6 +6,7 @@
 
 ## General Info
 This browser based web application to ...
+* Hi my name is Kemp. I'm excited about this project because I like coding.
 	
 ## Technologies
 Technologies used for this project:
