@@ -7,6 +7,7 @@
 ## General Info
 This browser based web application to ...
 * Hi my name is Kemp. I'm excited about this project because I like coding.
+* Hi my name is Minji. I'm excited about this project because it is fasinating that I'm making my own web application with my own ideas.
 	
 ## Technologies
 Technologies used for this project:
