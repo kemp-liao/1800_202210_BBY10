@@ -4,7 +4,6 @@
 <head>
   <title>Sports Go!</title>
   <meta name="author" content="BCIT">
-  <link rel="stylesheet" href="./styles/style.css">
   <script src="https://kit.fontawesome.com/09ada1b0d4.js" crossorigin="anonymous"></script>
 
   <!-- Required meta tags -->
@@ -22,11 +21,19 @@
 
   <!--Local CSS-->
   <link href="./styles/style.css" rel="stylesheet">
+
+  <!--Local JS-->
+  <script src="./scripts/script.js"></script>
+
+  <!--Openlayer Map-->
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/build/ol.js"></script>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/css/ol.css">
 </head>
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-light bg-light">
+  <nav class="navbar navbar-light bg-light sticky-top">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar">
@@ -70,7 +77,7 @@
   </nav>
 
   <!--Jumbotron with welcome message-->
-  <div class="px-4 pt-5 my-5 text-center border-bottom">
+<!--   <div class="px-4 pt-5 my-5 text-center border-bottom">
     <h1 class="display-4 fw-bold">Sports Go!</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">A creative way for busy modern individuals to find people to play sports together.</p>
@@ -85,10 +92,27 @@
           height="500" loading="lazy">
       </div>
     </div>
-  </div>
+  </div> -->
 
+  <!--Map-->
+  <div id="map" class="map"></div>
+  <script type="text/javascript">
+    var map = new ol.Map({
+      target: 'map',
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        })
+      ],
+      view: new ol.View({
+        center: ol.proj.fromLonLat([-123.00, 49.23]),
+        zoom: 12
+      })
+    });
+  </script>
+  
   <!--Footer-->
-  <div class="container">
+  <div class="container fixed-bottom">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="col-md-4 d-flex align-items-center">
         <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
