@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+  <!-- java script for login features-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
+
   <title>Sports Go!</title>
   <meta name="author" content="BCIT">
   <script src="https://kit.fontawesome.com/09ada1b0d4.js" crossorigin="anonymous"></script>
@@ -68,7 +77,7 @@
           <img src="./images/user.png" id="user-icon" alt="User">
         </button>
         <ul class="dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Login</a></li>
+          <li><a class="dropdown-item" href="login.html">Login</a></li>
           <li><a class="dropdown-item" href="#">Profile</a></li>
           <li><a class="dropdown-item" href="#">Setting</a></li>
         </ul>
@@ -77,7 +86,7 @@
   </nav>
 
   <!--Jumbotron with welcome message-->
-<!--   <div class="px-4 pt-5 my-5 text-center border-bottom">
+  <!--   <div class="px-4 pt-5 my-5 text-center border-bottom">
     <h1 class="display-4 fw-bold">Sports Go!</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">A creative way for busy modern individuals to find people to play sports together.</p>
@@ -110,7 +119,7 @@
       })
     });
   </script>
-  
+
   <!--Footer-->
   <div class="container fixed-bottom">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -126,7 +135,7 @@
     </footer>
   </div>
 
-
+  <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
 
 </body>
 
