@@ -3,7 +3,7 @@
 
 <head>
   <!-- java script for login features-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -26,7 +26,7 @@
   <!-- Boostrap Library JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+  </script>
 
   <!--Local CSS-->
   <link href="./styles/style.css" rel="stylesheet">
@@ -116,97 +116,93 @@
     // Add zoom and rotation controls to the map.
     map.addControl(new mapboxgl.NavigationControl());
 
-      map.on('load', () => {
-   
-            map.addSource('places', {
-              // This GeoJSON contains features that include an "icon"
-              // property. The value of the "icon" property corresponds
-              // to an image in the Mapbox Streets style's sprite.
-              'type': 'geojson',
-              'data': {
-                'type': 'FeatureCollection',
-                'features': [
-                  {
-                    'type': 'Feature',
-                    'properties': {
-                      'description':
-                        '<strong>Meeting 1</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
-                        'icon': 'golf-15'
-                    },
-                    'geometry': {
-                      'type': 'Point',
-                      'coordinates': [-123.013590, 49.226119]
-                    }
-                  },
-                  {
-                    'type': 'Feature',
-                    'properties': {
-                      'description':
-                        '<strong>Meeting 2</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href="http://madmens5finale.eventbrite.com/" target="_blank" title="Opens in a new window">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>',
-                      'icon': 'golf-15'
-                    },
-                    'geometry': {
-                      'type': 'Point',
-                      'coordinates': [-123.000724, 49.248196]
-                    }
-                  },
-                  {
-                    'type': 'Feature',
-                    'properties': {
-                      'description':
-                        '<strong>Meeting 3</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href="http://tallulaeatbar.ticketleap.com/2012beachblanket/" target="_blank" title="Opens in a new window">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>',
-                      'icon': 'golf-15',
-                      'icon-size': 1.4
-                    },
-                    'geometry': {
-                      'type': 'Point',
-                      'coordinates': [-122.995537, 49.271731]
-                    }
-                  }
-                ]
+    map.on('load', () => {
+
+      map.addSource('places', {
+        // This GeoJSON contains features that include an "icon"
+        // property. The value of the "icon" property corresponds
+        // to an image in the Mapbox Streets style's sprite.
+        'type': 'geojson',
+        'data': {
+          'type': 'FeatureCollection',
+          'features': [{
+              'type': 'Feature',
+              'properties': {
+                'description': '<strong>Meeting 1</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
+                'icon': 'golf-15'
+              },
+              'geometry': {
+                'type': 'Point',
+                'coordinates': [-123.013590, 49.226119]
               }
-            });
-            // Add a layer showing the places.
-            map.addLayer({
-              'id': 'places',
-              'type': 'symbol',
-              'source': 'places',
-              'layout': {
-                'icon-image': '{icon}',
-                'icon-allow-overlap': true
+            },
+            {
+              'type': 'Feature',
+              'properties': {
+                'description': '<strong>Meeting 2</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href="http://madmens5finale.eventbrite.com/" target="_blank" title="Opens in a new window">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>',
+                'icon': 'golf-15'
+              },
+              'geometry': {
+                'type': 'Point',
+                'coordinates': [-123.000724, 49.248196]
               }
-            });
-
-            // When a click event occurs on a feature in the places layer, open a popup at the
-            // location of the feature, with description HTML from its properties.
-            map.on('click', 'places', (e) => {
-              // Copy coordinates array.
-              const coordinates = e.features[0].geometry.coordinates.slice();
-              const description = e.features[0].properties.description;
-
-              // Ensure that if the map is zoomed out such that multiple
-              // copies of the feature are visible, the popup appears
-              // over the copy being pointed to.
-              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            },
+            {
+              'type': 'Feature',
+              'properties': {
+                'description': '<strong>Meeting 3</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href="http://tallulaeatbar.ticketleap.com/2012beachblanket/" target="_blank" title="Opens in a new window">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>',
+                'icon': 'golf-15',
+                'icon-size': 1.4
+              },
+              'geometry': {
+                'type': 'Point',
+                'coordinates': [-122.995537, 49.271731]
               }
+            }
+          ]
+        }
+      });
+      // Add a layer showing the places.
+      map.addLayer({
+        'id': 'places',
+        'type': 'symbol',
+        'source': 'places',
+        'layout': {
+          'icon-image': '{icon}',
+          'icon-allow-overlap': true
+        }
+      });
 
-              new mapboxgl.Popup()
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(map);
-            });
+      // When a click event occurs on a feature in the places layer, open a popup at the
+      // location of the feature, with description HTML from its properties.
+      map.on('click', 'places', (e) => {
+        // Copy coordinates array.
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = e.features[0].properties.description;
 
-            // Change the cursor to a pointer when the mouse is over the places layer.
-            map.on('mouseenter', 'places', () => {
-              map.getCanvas().style.cursor = 'pointer';
-            });
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
 
-            // Change it back to a pointer when it leaves.
-            map.on('mouseleave', 'places', () => {
-              map.getCanvas().style.cursor = '';
-            });
-          });
+        new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(description)
+          .addTo(map);
+      });
+
+      // Change the cursor to a pointer when the mouse is over the places layer.
+      map.on('mouseenter', 'places', () => {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      // Change it back to a pointer when it leaves.
+      map.on('mouseleave', 'places', () => {
+        map.getCanvas().style.cursor = '';
+      });
+    });
   </script>
 
   <!--Footer-->
