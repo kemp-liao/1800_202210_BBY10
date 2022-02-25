@@ -6,7 +6,7 @@
     list-style: none;
 }
 
-.map {
+#map {
     height: 75vh;
     width: 100%;
   }
