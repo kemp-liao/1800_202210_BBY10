@@ -2,15 +2,6 @@
 <html lang="en">
 
 <head>
-  <!-- java script for login features-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
-
   <title>Sports Go!</title>
   <meta name="author" content="BCIT">
   <script src="https://kit.fontawesome.com/09ada1b0d4.js" crossorigin="anonymous"></script>
@@ -31,61 +22,27 @@
   <!--Local CSS-->
   <link href="./styles/style.css" rel="stylesheet">
 
-  <!--Local JS-->
-  <script src="./scripts/script.js"></script>
-
   <!--Mapbox-->
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+  <!-- java script for login features-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+
 </head>
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-light bg-light sticky-top">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Sports Go!</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-bodyk px-4">
-          <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Meetings</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Learning Sessions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Community Hub</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- Profile Dropdown Menu -->
-      <div class="dropdown px-1">
-        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <img src="./images/user.png" id="user-icon" alt="User">
-        </button>
-        <ul class="dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="login.html">Login</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-          <li><a class="dropdown-item" href="#">Setting</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <nav id="navbarPlaceholder"></nav>
 
   <!--Jumbotron with welcome message-->
-  <!--   <div class="px-4 pt-5 my-5 text-center border-bottom">
+  <!-- <div class="px-4 pt-5 my-5 text-center border-bottom">
     <h1 class="display-4 fw-bold">Sports Go!</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">A creative way for busy modern individuals to find people to play sports together.</p>
@@ -107,22 +64,13 @@
   <script src="./scripts/map.js"></script>
 
   <!--Footer-->
-  <div class="container fixed-bottom">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <div class="col-md-4 d-flex align-items-center">
-        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-          <svg class="bi" width="30" height="24">
-            <use xlink:href="#bootstrap" />
-          </svg>
-        </a>
-        <span class="text-muted">&copy; BBY TEAM 10 </span>
-      </div>
-      <p>Help</p>
-    </footer>
-  </div>
+  <nav id="footerFixedPlaceholder"></nav>
 
+
+  <!--Local JS-->
+  <script src="./scripts/script.js"></script>
   <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
-
+  <script src="./scripts/skeleton.js"></script>
 </body>
 
 </html>

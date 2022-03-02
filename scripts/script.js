@@ -1,23 +1,44 @@
+//Check if the user logged in
 function sayHello() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             // Do something for the user here. 
-            console.log(user.uid);
+            console.log(user.uid); //Get the UID
             db.collection("users").doc(user.uid)
                 .get()
                 .then(function (doc) {
                     var n = doc.data().name;
                     console.log(n);
                     //$("#username").text(n);
-                    document.getElementById("username").innerText = n;
+                    document.getElementById("name-goes-here").innerText = n;
                 })
         } else {
             // No user is signed in.
         }
     });
 }
+
+sayHello();
 //sayHello();
+
+// function insertName() {
+//     //to check if the user is logged in:
+//     firebase.auth().onAuthStateChanged(user =>{
+//         if (user){
+//             console.log(user.uid) //let me to know who is the user that logged in
+//             currentUser = db.collection("users").doc(user.uid); // will go the the firesotre to go to the document of the users.
+//             currentUser.get().then(userDoc =>{
+//                 //get the user name
+//                 var user_Name = userDoc.data().name;
+//                 console.log(user_Name);
+//                 document.getElementById("name-goes-here").innerText=user_Name;
+//                 //$("#name-goes-here").text(user_Name);//jquery
+//             })
+//         }
+//     })
+// }
+// insertName();
 
 function writeWebcamData() {
     //this is an array of JSON objects copied from open source data
