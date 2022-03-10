@@ -1,43 +1,56 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Wellfleet&display=swap');
+
+  * {
+    font-family: "wellfleet";
+  }
+
+  .offcanvas-title img {
+    margin: 20px 0 -10px 20px;
+  }
+</style>
+
 <!--Navbar HTML-->
 <nav class="navbar navbar-light bg-light sticky-top">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Sports Go!</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-bodyk px-4">
-          <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../ListView.html">Meetings</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Learning Sessions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Community Hub</a>
-            </li>
-          </ul>
-        </div>
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <class class="offcanvas-title" id="offcanvasNavbarLabel"><img src="./images/logo.png" width="170px"></class>
+        </h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <!-- Profile Dropdown Menu -->
-      <div class="dropdown px-1">
-        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <img src="./images/user.png" id="user-icon" alt="User">
-        </button>
-        <ul class="dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="login.html">Login</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-          <li><a class="dropdown-item" href="#">Setting</a></li>
+      <div class="offcanvas-bodyk px-4">
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Meetings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Learning Sessions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Community Hub</a>
+          </li>
         </ul>
       </div>
     </div>
-  </nav>
+    <!-- Profile Dropdown Menu -->
+    <div class="dropdown px-1">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <img src="./images/user.png" id="user-icon" alt="User">
+      </button>
+      <ul class="dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="login.html">Login</a></li>
+        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+        <li><a class="dropdown-item" href="#">Setting</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

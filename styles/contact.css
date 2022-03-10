@@ -1,0 +1,46 @@
+#contact-page {
+    /* background-color: #87CEEB; */
+    background-image: url(../images/contact.png);
+    background-repeat: no-repeat;
+    /* background-size: contain; */
+    background-size: 90% 75%;
+    background-position: 50% -25%;
+}
+
+#contact {
+    font-size: 45pt;
+    color: white;
+    -webkit-text-stroke: 0.2px black;
+    margin-top: 5%;
+}
+
+#contact-description {
+    font-size: 15pt;
+}
+
+address {
+    margin-top: 40px;
+}
+
+address a {
+    color: rgb(6, 86, 117);
+    margin-right: 30px;
+    font-size: 25px;
+}
+
+address a:hover {
+    color: rgb(9, 122, 167);
+}
+
+#write-an-email {
+    padding-right: 10%;
+}
+
+#write-an-email h1 {
+    text-align: center;
+}
+
+#contact-page {
+    padding-left: 10%;
+    padding-bottom: 4%;
+}

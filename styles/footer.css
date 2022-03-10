@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Wellfleet&display=swap');
+
+* {
+    font-family: "wellfleet";
+}
+
+#footercontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.bottom {
+    list-style: none;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.bottom li {
+    display: inline;
+}
+
+.bottom li a {
+    text-decoration: none;
+    color: black;
+}
+
+#firstitem {
+    margin-right: 15px;
+}
+
+#footercontainer p {
+    text-align: right;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+.bottom a:hover {
+    color: #87ceeb;
+}
