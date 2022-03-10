@@ -26,18 +26,40 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
 
+    <!--Mapbox geocoder-->
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css"> 
+
     <!-- java script for login features-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
 
 </head>
 
 <body>
+    <!--Submission modal-->
+    <div class="submodal-wrap display-nonem">
+        <div class="submodal">
+            <img src="./images/checked.png" alt="">
+            <p>Your new meeting has been posted!</p>
+            <button class="btnclose modal-close btn btn-secondary">Close</button>
+        </div>
+    </div>
+
+    <!--User login check modal-->
+    <!-- <div class="submodal-wrap2 display-nonem2">
+        <div class="submodal2">
+            <img src="./images/cancel.png" alt="">
+            <p>Please log in first!</p>
+            <a class="btn btn-secondary" href="login.html" role="button">OK</a>
+        </div>
+    </div> -->
+
     <!-- Navbar -->
     <nav id="navbarPlaceholder"></nav>
 
@@ -47,8 +69,10 @@
     </div>
     <!--Name-->
     <div class="p-3">
-        <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example"
+        <input class="form-control" type="text" placeholder="Name" aria-label="Disabled input example" id="name_form"
             disabled>
+        <label for="exampleFormControlInput1" class="form-label">If it is not your name, please log out and log in with
+            your account.</label>
     </div>
     <!--Map-->
     <div class="p-3">
@@ -56,62 +80,68 @@
     </div>
     <script src="./scripts/map_small.js"></script>
 
-    <!--Title-->
-    <div class="p-3">
-        <div class="form-floating">
-            <textarea class="form-control" placeholder="Title" id="floatingTextarea"></textarea>
-            <label for="floatingTextarea">Title</label>
+    <form class="new-meeting">
+        <!--Meeting Title-->
+        <div class="p-3">
+            <div class="form-floating">
+                <input class="form-control" placeholder="Title" id="meeting-title" required>
+                <label for="floatingTextarea">Title</label>
+            </div>
         </div>
-    </div>
 
-    <!--Title-->
-    <div class="p-3">
-        <div class="form-floating">
-            <textarea class="form-control" placeholder="Location of the meeting" id="floatingTextarea"></textarea>
-            <label for="floatingTextarea">Location</label>
+        <!--Location-->
+        <div class="p-3">
+            <div class="form-floating">
+                <input class="form-control" placeholder="Location of the meeting" id="meeting-location" required>
+                <label for="floatingTextarea">Location</label>
+            </div>
         </div>
-    </div>
 
-    <!--Number of people-->
-    <div class="p-3">
-        <label for="exampleFormControlInput1" class="form-label">Number of People</label>
-        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="1">
-    </div>
-
-    <!--Date & Time-->
-    <div class="p-3">
-        <label for="exampleFormControlInput1" class="form-label">Date and Time</label>
-        <input type="date" class="form-control" id="exampleFormControlInput1" id="date"><br>
-        <input type="time" class="form-control" id="exampleFormControlInput1" id="time">
-    </div>
-
-    <!--Number of people-->
-    <div class="p-3">
-        <label for="exampleFormControlInput1" class="form-label">Duration (Hours)</label>
-        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="1">
-    </div>
-
-    <!--Description-->
-    <div class="p-3">
-        <div class="form-floating">
-            <textarea class="form-control" placeholder="Detailed description" id="floatingTextarea2"
-                style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Description</label>
+        <!--Number of people-->
+        <div class="p-3">
+            <label for="exampleFormControlInput1" class="form-label">Number of People</label>
+            <input type="number" class="form-control" id="meeting-people"
+                placeholder="The number of people needed for the meeting, minimum is 2" min="2" required>
         </div>
-    </div>
 
-    <!--Button-->
-    <div class="text-center">
-        <input class="btn btn-secondary" type="submit" value="Submit">
-    </div>
+        <!--Date & Time-->
+        <div class="p-3">
+            <label for="exampleFormControlInput1" class="form-label">Date and Time</label>
+            <input type="date" class="form-control" id="meeting-date" id="date" required><br>
+            <input type="time" class="form-control" id="meeting-time" id="time" required>
+        </div>
+
+        <!--Duration-->
+        <div class="p-3">
+            <label for="exampleFormControlInput1" class="form-label">Duration (Hours)</label>
+            <input type="number" class="form-control" id="meeting-duration"
+                placeholder="The duration of the meeting, minimum is 1" min="1" required>
+        </div>
+
+        <!--Description-->
+        <div class="p-3">
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Detailed description" id="meeting-description"
+                    style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Description</label>
+            </div>
+        </div>
+
+        <!--Button-->
+        <div class="text-center">
+            <input class="btn btn-secondary px-3" type="reset" value="Reset">
+            <input class="btn btn-secondary px-3" type="submit" value="Submit" id="submit">
+        </div>
+    </form>
+
     <!--Footer-->
     <nav id="footerPlaceholder"></nav>
-
 
     <!--Local JS-->
     <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/add_new_meeting.js"></script>
 </body>
 
 </html>

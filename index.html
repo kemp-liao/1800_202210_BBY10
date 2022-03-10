@@ -17,7 +17,7 @@
   <!-- Boostrap Library JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-  </script>
+    </script>
 
   <!--Local CSS-->
   <link href="./styles/style.css" rel="stylesheet">
@@ -60,9 +60,47 @@
   </div> -->
 
   <!--Map-->
+
   <div id="map"></div>
-  <script src="./scripts/map.js"></script>
-  
+
+  <!--List View Button-->
+  <div id="list-view-button">
+    <a href="ListView.html"><img id="list-pic" src="./images/list.png" title="List View"></a>
+    <a href="AddNewMeeting.html"><img id="add-pic-mapview" src="./images/add.png" title="Add New Meeting"></a>
+  </div>
+
+  <!--Popup modal-->
+  <div class="container">
+    <div id="meetings-go-here" class=""></div>
+  </div>
+
+  <!--The modals-->
+  <template id="meeting-list-template">
+    <div class="modal fade" id="detail-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modallable">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Author: <span id="span1"></span>&nbsp;<span id="time-stamp"></span></p>
+            <p>Meeting Time: <span id="span2"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="span3"></span></p>
+            <p>Duration: <span id="span4"></span></p>
+            <p>Number of People Needed: <span id="span5"></span></p>
+            <p>Location: <span id="span6"></span></p>
+            <p>Details: <span id="span7"></span></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Join</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
 
   <!--Footer-->
   <nav id="footerFixedPlaceholder"></nav>
@@ -72,6 +110,7 @@
   <script src="./scripts/script.js"></script>
   <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
   <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/map.js"></script>
 </body>
 
 </html>

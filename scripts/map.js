@@ -1,3 +1,4 @@
+//Start a map
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2VtdHVtIiwiYSI6ImNsMDJ1cmRkMDB3dG0zb3J5ZG94bnl5MHMifQ.a3eJ7aW4pIu0NFXj70NMpQ';
 const map = new mapboxgl.Map({
     container: 'map', // container ID
@@ -14,50 +15,50 @@ map.addControl(new mapboxgl.NavigationControl());
 map.on('load', () => {
 
 
-    map.addSource('places', {
-        // This GeoJSON contains features that include an "icon"
-        // property. The value of the "icon" property corresponds
-        // to an image in the Mapbox Streets style's sprite.
-        'type': 'geojson',
-        'data': {
-            'type': 'FeatureCollection',
-            'features': [
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'description':
-                            '<strong>Meeting 1</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
-                    },
-                    'geometry': {
-                        'type': 'Point',
-                        'coordinates': [-123.013590, 49.226119]
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'description':
-                            '<strong>Meeting 2</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href="http://madmens5finale.eventbrite.com/" target="_blank" title="Opens in a new window">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>',
-                    },
-                    'geometry': {
-                        'type': 'Point',
-                        'coordinates': [-123.000724, 49.248196]
-                    }
-                },
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'description':
-                            '<strong>Meeting 3</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href="http://tallulaeatbar.ticketleap.com/2012beachblanket/" target="_blank" title="Opens in a new window">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>',
-                    },
-                    'geometry': {
-                        'type': 'Point',
-                        'coordinates': [-122.995537, 49.271731]
-                    }
-                }
-            ]
-        }
-    });
+    // map.addSource('places', {
+    //     // This GeoJSON contains features that include an "icon"
+    //     // property. The value of the "icon" property corresponds
+    //     // to an image in the Mapbox Streets style's sprite.
+    //     'type': 'geojson',
+    //     'data': {
+    //         'type': 'FeatureCollection',
+    //         'features': [
+    //             {
+    //                 'type': 'Feature',
+    //                 'properties': {
+    //                     'description':
+    //                         '<strong>Meeting 1</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
+    //                 },
+    //                 'geometry': {
+    //                     'type': 'Point',
+    //                     'coordinates': [-123.013590, 49.226119]
+    //                 }
+    //             },
+    //             {
+    //                 'type': 'Feature',
+    //                 'properties': {
+    //                     'description':
+    //                         '<strong>Meeting 2</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href="http://madmens5finale.eventbrite.com/" target="_blank" title="Opens in a new window">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>',
+    //                 },
+    //                 'geometry': {
+    //                     'type': 'Point',
+    //                     'coordinates': [-123.000724, 49.248196]
+    //                 }
+    //             },
+    //             {
+    //                 'type': 'Feature',
+    //                 'properties': {
+    //                     'description':
+    //                         '<strong>Meeting 3</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href="http://tallulaeatbar.ticketleap.com/2012beachblanket/" target="_blank" title="Opens in a new window">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>',
+    //                 },
+    //                 'geometry': {
+    //                     'type': 'Point',
+    //                     'coordinates': [-122.995537, 49.271731]
+    //                 }
+    //             }
+    //         ]
+    //     }
+    // });
 
 
     // Load an image from an external URL.
@@ -123,3 +124,71 @@ map.on('load', () => {
         map.getCanvas().style.cursor = '';
     });
 });
+
+
+
+function displayMeetings(collection) {
+    let MeetingsTemplate = document.getElementById("meeting-list-template");
+
+    db.collection(collection).get()
+        .then(snap => {
+            var i = 1;
+
+            snap.forEach(doc => { //iterate thru each doc
+                var title = doc.data().title;
+                var creator = doc.data().creator;
+                var date = doc.data().date;
+                var time = doc.data().time;
+                var duration = doc.data().duration;
+                var location = doc.data().location;
+                var people = doc.data().people;
+                var description = doc.data().description;
+                var logitude = doc.data().logitude;
+                var latitude = doc.data().latitude;
+                //var timestamp = doc.data().timestamp;
+                let newcard = MeetingsTemplate.content.cloneNode(true);
+                
+                //create modal via js
+                var myModal = new bootstrap.Modal(newcard.querySelector("#detail-modal"));
+
+                //update modal description
+                newcard.querySelector("#modallable").innerHTML = title;
+                newcard.querySelector("#span1").innerHTML = creator;
+                newcard.querySelector("#span2").innerHTML = date;
+                newcard.querySelector("#span3").innerHTML = time;
+                newcard.querySelector("#span4").innerHTML = duration;
+                newcard.querySelector("#span5").innerHTML = people;
+                newcard.querySelector("#span6").innerHTML = location;
+                newcard.querySelector("#span7").innerHTML = description;
+                //newcard.querySelector("#time-stamp").innerHTML = timestamp;
+
+
+                //give unique ids list cards and modals
+                //newcard.querySelector('#brief-list').setAttribute("id", "brief-list" + i);
+                //newcard.querySelector('#detail-modal').setAttribute("id", "detail-modal" + i);
+
+                document.getElementById(collection + "-go-here").appendChild(newcard);
+
+                 //add markers to the map
+                 const marker = new mapboxgl.Marker({
+                    color: "#002676",
+                    draggable: false
+
+                }).setLngLat([logitude, latitude])
+                    .setPopup(new mapboxgl.Popup({
+                        closeOnClick: true,
+                        closeButton: false,
+                        className: 'card-body',
+                    }).on('open', () => {
+                        console.log('popup was opened');
+                        myModal.toggle(); // toggle the modal
+                        }))
+                    .addTo(map);
+                    
+                
+                i++;
+            })
+        })
+}
+
+displayMeetings("meetings");
