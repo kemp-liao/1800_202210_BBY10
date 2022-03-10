@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Go! - Login</title>
+    <title>Sports Go! - contact</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -43,7 +43,7 @@
     <!-- Navbar -->
     <nav id="navbarPlaceholder"></nav>
 
-    <div id="contactpage">
+    <div id="contact-page">
         <p id="contact"><b>CONTACT US</b></p>
         <p id="contact-description">Please feel free to email us with any questions or inquiries. We will get back to
             you
@@ -52,6 +52,47 @@
             <a href="mailto:eoeomj97@gmail.com"><i class="far fa-envelope fa"> Wendy Kong</i></a>
             <a href="mailto:kempliao@gmail.com"><i class="far fa-envelope fa"> Kemp Liao</i></a>
         </address>
+
+        <div id="write-an-email">
+            <br>
+            <h1>Get In Touch</h1>
+            <br>
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Add a title</label>
+                    <input type="text" class="form-control" id="title" placeholder="Title">
+                </div><br>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">What is the purpose of the email?</label>
+                    <select class="form-control" id="reason">
+                        <option>Review</option>
+                        <option>Question</option>
+                        <option>Report</option>
+                    </select>
+                    <br>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Full name</label>
+                    <textarea class="form-control" id="name" rows="1"></textarea>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Email</label>
+                    <textarea class="form-control" id="email" rows="1"></textarea>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Message</label>
+                    <textarea class="form-control" id="message" rows="5"></textarea>
+                </div>
+                <br>
+
+                <br>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-lg btn-info pull-right" onclick="writeReview()">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
 
 
@@ -63,6 +104,7 @@
     <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/email.js"></script>
 </body>
 
 </html>
