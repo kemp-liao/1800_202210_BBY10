@@ -1,0 +1,73 @@
+#aboutus-page {
+    width: 100vw;
+    height: 70vh;
+    background: linear-gradient(to bottom,
+            #0c6081 0%,
+            #0c6081 20%);
+    text-align: center;
+}
+
+.column {
+    float: left;
+    width: 30%;
+    margin: 5% 10% 5% 10%;
+}
+
+.card1,
+.card2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+}
+
+.card1 {
+    margin-right: -5%;
+}
+
+.card1 img {
+    width: 90%;
+}
+
+.card2 {
+    margin-left: 10%;
+}
+
+.card2 img {
+    width: 90%;
+    margin: 0 5% 0 5%;
+}
+
+#mission {
+    margin-top: 3%;
+    color: #87CEEB;
+}
+
+#mission p,
+#story p {
+    color: white;
+}
+
+#story {
+    margin-top: 3%;
+    color: #87CEEB;
+}
+
+#quote {
+    margin-top: 8%;
+}
+
+#leadership h2 {
+    margin-bottom: -3%;
+}
+
+@media screen and (max-width: 701px) {
+    .column {
+        width: 60%;
+        display: block;
+        margin: 5% 5% 5% 18%;
+    }
+
+    #card1 {
+        height: 20%;
+    }
+
+}

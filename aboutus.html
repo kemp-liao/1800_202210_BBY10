@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Go! - Login</title>
+    <title>Sports Go! - About Us</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,7 +21,7 @@
 
     <!--Local CSS-->
     <link href="./styles/style.css" rel="stylesheet">
-    <link href="./styles/login.css" rel="stylesheet">
+    <link href="./styles/aboutus.css" rel="stylesheet">
 
     <!--Mapbox-->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
@@ -39,20 +39,58 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav id="navbarPlaceholder"></nav>
+    <div id="aboutus-page">
+        <!-- Navbar -->
+        <nav id="navbarPlaceholder"></nav>
 
-    <br>
-    <div class="container">
-        <p id="welcome"><b>welcome to </b></p><img src="./images/logo.png" alt=""><img>
+        <div id="mission">
+            <h2>Our Mission</h2>
+            <P>To provide opportunity to meet new people and enjoy sports</P>
+        </div>
+        <div id="story">
+            <h2>Our Story</h2>
+            <p>Our app, SportsGo!, serves as a community hub and a search engine for modern busy individuals to find
+                people to play sports together.
+                Modern people are too busy with their lives that it is quite hard to gather friends or family whenever
+                they have leisure time.
+                This app will help users to find random people to play sports together to balance and enjoy their lives.
+                Users can post sports meetings or free learning & teaching sessions, and socialize with other people.
+            </p>
+        </div>
+        <div id="quote">
+            <p>"Do you know what my favorite part of the game is? The opportunity to play."</p>
+            <p>- Mike Singletary</p>
+        </div>
+        <br>
+        <div id="leadership">
+            <h2 style="text-align:center">Our Team</h2>
+            <div class="row">
+                <div class="column">
+                    <div class="card1">
+                        <img src="./images/Wendy.jpg" alt="Wendy">
+                        <div class="member">
+                            <h3>Wendy Kong</h3>
+                            <p class="title">CO-FOUNDER & DESIGNER</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card2">
+                        <img src="./images/Kemp.png" alt="Kemp">
+                        <div class="member">
+                            <h3>Kemp Liao</h3>
+                            <p class="title">CO-FOUNDER & CODER</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--Footer-->
+        <nav id="footerPlaceholder"></nav>
     </div>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-
-
-    <!--Footer-->
-    <nav id="footerPlaceholder"></nav>
-
 
     <!--Local JS-->
     <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
