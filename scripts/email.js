@@ -2,7 +2,10 @@ function writeReview() {
     let Name = document.getElementById("name").value;
     let Email = document.getElementById("email").value;
     let Message = document.getElementById("message").value;
-    console.log(Name, Email.Message);
+    let Title = document.getElementById("title").value;
+    let Reason = document.getElementById("reason").value;
+
+    console.log(Name, Email.Message, Title, Reason);
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -16,6 +19,8 @@ function writeReview() {
                         userID: userID,
                         name: Name,
                         email: Email,
+                        title: Title,
+                        reason: Reason,
                         message: Message,
                         timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     }).then(() => {
