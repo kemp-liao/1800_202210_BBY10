@@ -1,4 +1,4 @@
-## My Web Application (Add your Title here)
+## My Web Application (comp1800)
 
 * [General info](#general-info)
 * [Technologies](#technologies)
