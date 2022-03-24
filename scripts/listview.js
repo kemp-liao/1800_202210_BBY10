@@ -21,7 +21,7 @@ function displayMeetings(collection) {
                 newcard.querySelector('#creator').innerHTML = creator;
                 newcard.querySelector('#date').innerHTML = date;
                 newcard.querySelector('#time').innerHTML = time;
-                newcard.querySelector('#duration').innerHTML = duration;
+                newcard.querySelector('#list-location').innerHTML = location;
 
                 //update modal description
                 newcard.querySelector("#modallable").innerHTML = title;
