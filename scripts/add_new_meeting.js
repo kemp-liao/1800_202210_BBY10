@@ -24,6 +24,7 @@ const geocoder = new MapboxGeocoder({
     latitude: 49.249324,
     // Coordinates of BCIT
     }
+    
 });
 
 // Add the geocoder to the map

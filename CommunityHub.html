@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Go! - Meetings</title>
+    <title>Sports Go! - Community Hub</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -41,61 +41,35 @@
     <nav id="navbarPlaceholder"></nav>
 
 
-
+    
     <!--List of meetings-->
     <div class="container">
-        <div id="meetings-go-here" class=""></div>
+        <div id="threads-go-here" class=""></div>
     </div>
 
 
 
-    <!--The template for the lists-->
-    <template id="meeting-list-template">
+    <!-- The template for the lists -->
+    <template id="thread-list-template">
         <div class="card border-0 border-bottom p-3" id="brief-list">
             <div class="card-body">
                 <h5 class="card-title" id="title">Title</h5>
-                <h6 class="card-subtitle mb-2 text-muted"><span id="creator">Name</span>&nbsp;&nbsp;<span id="date">Date</span>
-                    <span id="time">Time</span>
+                <h6 class="card-subtitle mb-2 text-muted"><span id="creator">Name</span>&nbsp;&nbsp;<span id="date">Post Date</span>
                 </h6>
-                <p class="card-text">Duration: <span id="duration"></span> hours</p>
-                <div class="text-center">
-                    <a class="btn btn-secondary" role="button" data-bs-toggle="modal"
+                <p class="card-text"><span id="details">Details</span></p>
+                <!-- <div class="text-center">
+                    <a href="#" class="btn btn-secondary" role="button" data-bs-toggle="modal"
                         data-bs-target="#detail-modal" id="detailbutton">Details</a>
-                    <a class="btn btn-primary join-button" role="button">Join</a>
-                </div>
+                    <a href="#" class="btn btn-primary" role="button">Join</a>
+                </div> -->
             </div>
-        </div>
-
-        <!--The modals-->
-        <div class="modal fade" id="detail-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modallable">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Author: <span id="span1"></span></p>
-                    <p>Meeting Time: <span id="span2"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="span3"></span></p>
-                    <p>Duration: <span id="span4"></span></p>
-                    <p>Number of People Needed: <span id="span5"></span></p>
-                    <p>Location: <span id="span6"></span></p>
-                    <p>Details: <span id="span7"></span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
         </div>
     </template>
 
 
     <!--Nevigation button-->
     <div id="list-view-button">
-        <a href="index.html"><img id="map-pic" src="./images/map.png" title="Map View"></a>
-        <a href="AddNewMeeting.html"><img id="add-pic" src="./images/add.png" title="Add New Meeting"></a>
+        <a href="AddNewThread.html"><img id="add-pic" src="./images/add.png" title="Add New Thread"></a>
     </div>
 
     <!--Footer-->
@@ -105,7 +79,7 @@
     <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/listview.js"></script>
+    <script src="./scripts/communityhub.js"></script>
 </body>
 
 </html>

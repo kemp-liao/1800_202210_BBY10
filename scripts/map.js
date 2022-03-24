@@ -14,53 +14,6 @@ map.addControl(new mapboxgl.NavigationControl());
 
 map.on('load', () => {
 
-
-    // map.addSource('places', {
-    //     // This GeoJSON contains features that include an "icon"
-    //     // property. The value of the "icon" property corresponds
-    //     // to an image in the Mapbox Streets style's sprite.
-    //     'type': 'geojson',
-    //     'data': {
-    //         'type': 'FeatureCollection',
-    //         'features': [
-    //             {
-    //                 'type': 'Feature',
-    //                 'properties': {
-    //                     'description':
-    //                         '<strong>Meeting 1</strong><p><a href="http://www.mtpleasantdc.com/makeitmtpleasant" target="_blank" title="Opens in a new window">Make it Mount Pleasant</a> is a handmade and vintage market and afternoon of live entertainment and kids activities. 12:00-6:00 p.m.</p>',
-    //                 },
-    //                 'geometry': {
-    //                     'type': 'Point',
-    //                     'coordinates': [-123.013590, 49.226119]
-    //                 }
-    //             },
-    //             {
-    //                 'type': 'Feature',
-    //                 'properties': {
-    //                     'description':
-    //                         '<strong>Meeting 2</strong><p>Head to Lounge 201 (201 Massachusetts Avenue NE) Sunday for a <a href="http://madmens5finale.eventbrite.com/" target="_blank" title="Opens in a new window">Mad Men Season Five Finale Watch Party</a>, complete with 60s costume contest, Mad Men trivia, and retro food and drink. 8:00-11:00 p.m. $10 general admission, $20 admission and two hour open bar.</p>',
-    //                 },
-    //                 'geometry': {
-    //                     'type': 'Point',
-    //                     'coordinates': [-123.000724, 49.248196]
-    //                 }
-    //             },
-    //             {
-    //                 'type': 'Feature',
-    //                 'properties': {
-    //                     'description':
-    //                         '<strong>Meeting 3</strong><p>EatBar (2761 Washington Boulevard Arlington VA) is throwing a <a href="http://tallulaeatbar.ticketleap.com/2012beachblanket/" target="_blank" title="Opens in a new window">Big Backyard Beach Bash and Wine Fest</a> on Saturday, serving up conch fritters, fish tacos and crab sliders, and Red Apron hot dogs. 12:00-3:00 p.m. $25.grill hot dogs.</p>',
-    //                 },
-    //                 'geometry': {
-    //                     'type': 'Point',
-    //                     'coordinates': [-122.995537, 49.271731]
-    //                 }
-    //             }
-    //         ]
-    //     }
-    // });
-
-
     // Load an image from an external URL.
     map.loadImage(
         'https://cdn-icons-png.flaticon.com/512/684/684908.png',
@@ -125,7 +78,20 @@ map.on('load', () => {
     });
 });
 
+//
+//Meeting details function
+//
 
+
+var currentUser;
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        currentUser = db.collection("users").doc(user.uid);
+        console.log(currentUser);
+    } else {
+        console.log("No user is signed in");
+    }
+});
 
 function displayMeetings(collection) {
     let MeetingsTemplate = document.getElementById("meeting-list-template");
@@ -135,6 +101,7 @@ function displayMeetings(collection) {
             var i = 1;
 
             snap.forEach(doc => { //iterate thru each doc
+                var meetingID = doc.id;
                 var title = doc.data().title;
                 var creator = doc.data().creator;
                 var date = doc.data().date;
@@ -162,6 +129,9 @@ function displayMeetings(collection) {
                 newcard.querySelector("#span7").innerHTML = description;
                 //newcard.querySelector("#time-stamp").innerHTML = timestamp;
 
+                //Join function
+                newcard.querySelector('.join-button').onclick = () => join(meetingID);
+                newcard.querySelector('.join-button').id = 'joined-' + meetingID;
 
                 //give unique ids list cards and modals
                 //newcard.querySelector('#brief-list').setAttribute("id", "brief-list" + i);
@@ -192,3 +162,19 @@ function displayMeetings(collection) {
 }
 
 displayMeetings("meetings");
+
+
+function join(meetingID){
+    console.log(meetingID);
+    currentUser.set({
+        meetingsJoined: firebase.firestore.FieldValue.arrayUnion(meetingID)
+    }, {
+        merge: true
+    })
+    .then( () => {
+        console.log("Meeting has been joined");
+        var buttonID = 'joined-' + meetingID;
+        document.getElementById(buttonID).innerText = "Joined";
+        document.getElementById(buttonID).className = "btn btn-success join-button"
+    });
+}

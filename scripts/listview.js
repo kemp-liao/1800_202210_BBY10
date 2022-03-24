@@ -1,10 +1,23 @@
+var currentUser;
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        currentUser = db.collection("users").doc(user.uid);
+        console.log(currentUser);
+    } else {
+        console.log("No user is signed in");
+    }
+});
+
 function displayMeetings(collection) {
     let MeetingsTemplate = document.getElementById("meeting-list-template");
 
-    db.collection(collection).get()
+    db.collection(collection)
+        .orderBy("timestamp")
+        .get()
         .then(snap => {
             var i = 1;
             snap.forEach(doc => { //iterate thru each doc
+                var meetingID = doc.id;
                 var title = doc.data().title;   
                 var creator = doc.data().creator;
                 var date = doc.data().date;
@@ -15,6 +28,7 @@ function displayMeetings(collection) {
                 var description = doc.data().description;
                 let newcard = MeetingsTemplate.content.cloneNode(true);
 
+                
 
                 //update meetings list
                 newcard.querySelector('#title').innerHTML = title;
@@ -39,6 +53,10 @@ function displayMeetings(collection) {
                 newcard.querySelector('#detail-modal').setAttribute("id", "detail-modal" + i);
                 newcard.querySelector('#detailbutton').setAttribute("data-bs-target", "#detail-modal" + i);
 
+                //Join function
+                newcard.querySelector('.join-button').onclick = () => join(meetingID);
+                newcard.querySelector('.join-button').id = 'joined-' + meetingID;
+
                 document.getElementById(collection + "-go-here").appendChild(newcard);
                 i++;
             })
@@ -46,3 +64,18 @@ function displayMeetings(collection) {
 }
 
 displayMeetings("meetings");
+
+function join(meetingID){
+    console.log(meetingID);
+    currentUser.set({
+        meetingsJoined: firebase.firestore.FieldValue.arrayUnion(meetingID)
+    }, {
+        merge: true
+    })
+    .then( () => {
+        console.log("Meeting has been joined");
+        var buttonID = 'joined-' + meetingID;
+        document.getElementById(buttonID).innerText = "Joined";
+        document.getElementById(buttonID).className = "btn btn-success join-button"
+    });
+}
