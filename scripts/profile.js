@@ -94,7 +94,7 @@ function displayMeetings(collection) {
     for (i = 0; i < jl.length; i++) {
 
         db.collection(collection)
-            // .orderBy("timestamp")
+            // .orderBy("date")
             .doc(jl[i])
             .get()
             .then(doc => {
