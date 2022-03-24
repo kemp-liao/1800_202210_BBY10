@@ -55,4 +55,26 @@
     #profile-container button {
         margin-top: -5%;
     }
+
+    #meetings-catelog .btn {
+        width: 90%;
+        height: 70px;
+        margin: 3% 0 3% 0;
+        font-size: 15pt;
+    }
+
+    #meetings-catelog #joined-meetings {
+        text-align: center;
+        margin-top: 3%;
+    }
+
+    #meetings-catelog #interested-meetings {
+        text-align: center;
+        margin-bottom: 3%;
+    }
+
+    /* #meetings-catelog #past-meetings {
+        text-align: center;
+    } */
+
 }

@@ -5,7 +5,7 @@ function displayMeetings(collection) {
         .then(snap => {
             var i = 1;
             snap.forEach(doc => { //iterate thru each doc
-                var title = doc.data().title;   
+                var title = doc.data().title;
                 var creator = doc.data().creator;
                 var date = doc.data().date;
                 var time = doc.data().time;
@@ -22,6 +22,7 @@ function displayMeetings(collection) {
                 newcard.querySelector('#date').innerHTML = date;
                 newcard.querySelector('#time').innerHTML = time;
                 newcard.querySelector('#duration').innerHTML = duration;
+                // newcard.querySelector('button').id = 'save-' + meetingID;
 
                 //update modal description
                 newcard.querySelector("#modallable").innerHTML = title;
@@ -46,3 +47,22 @@ function displayMeetings(collection) {
 }
 
 displayMeetings("meetings");
+
+//-----------------------------------------------------------------------------
+// This function is called whenever the user clicks on the "bookmark" icon.
+// It adds the meeting to the "bookmarks" array
+// Then it will change the bookmark icon from the hollow to the solid version. 
+//-----------------------------------------------------------------------------
+function saveBookmark(meetingID) {
+    currentUser.set({
+            bookmarks: firebase.firestore.FieldValue.arrayUnion(meetingID)
+        }, {
+            merge: true
+        })
+        .then(function () {
+            console.log("bookmark has been saved for: " + currentUser);
+            var iconID = 'save-' + meetingID;
+            //console.log(iconID);
+            document.getElementById(iconID).innerText = 'bookmark';
+        });
+}
