@@ -1,10 +1,37 @@
+///////////////////////////
+//Display joined meetings//
+///////////////////////////
+var currentUser;
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        currentUser = db.collection("users").doc(user.uid);
+        db.collection("users").doc(user.uid)
+            .get()
+            .then(function (doc) {
+                var joinedList = doc.data().meetingsJoined;
+                //Pass the data to local storage
+                localStorage.setItem("joinedList", joinedList);
+            })
+        console.log(currentUser);
+    } else {
+        console.log("No user is signed in");
+    }
+});
+
 function displayMeetings(collection) {
     let MeetingsTemplate = document.getElementById("meeting-list-template");
 
-    db.collection(collection).get()
-        .then(snap => {
-            var i = 1;
-            snap.forEach(doc => { //iterate thru each doc
+    var jl = localStorage.getItem("joinedList").split(',');
+    console.log(jl);
+    var i;
+    for (i = 0; i < jl.length; i++) {
+
+        db.collection(collection)
+            // .orderBy("timestamp")
+            .doc(jl[i])
+            .get()
+            .then(doc => {
+                var meetingID = doc.id;
                 var title = doc.data().title;
                 var creator = doc.data().creator;
                 var date = doc.data().date;
@@ -14,6 +41,7 @@ function displayMeetings(collection) {
                 var people = doc.data().people;
                 var description = doc.data().description;
                 let newcard = MeetingsTemplate.content.cloneNode(true);
+
 
 
                 //update meetings list
@@ -39,29 +67,13 @@ function displayMeetings(collection) {
                 newcard.querySelector('#detail-modal').setAttribute("id", "detail-modal" + i);
                 newcard.querySelector('#detailbutton').setAttribute("data-bs-target", "#detail-modal" + i);
 
+
                 document.getElementById(collection + "-go-here").appendChild(newcard);
-                i++;
             })
-        })
+
+    }
+
+
 }
 
 displayMeetings("meetings");
-
-//-----------------------------------------------------------------------------
-// This function is called whenever the user clicks on the "bookmark" icon.
-// It adds the meeting to the "bookmarks" array
-// Then it will change the bookmark icon from the hollow to the solid version. 
-//-----------------------------------------------------------------------------
-function saveBookmark(meetingID) {
-    currentUser.set({
-            bookmarks: firebase.firestore.FieldValue.arrayUnion(meetingID)
-        }, {
-            merge: true
-        })
-        .then(function () {
-            console.log("bookmark has been saved for: " + currentUser);
-            var iconID = 'save-' + meetingID;
-            //console.log(iconID);
-            document.getElementById(iconID).innerText = 'bookmark';
-        });
-}
