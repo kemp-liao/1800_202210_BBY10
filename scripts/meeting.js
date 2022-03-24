@@ -1,6 +1,6 @@
-///////////////////////////
-//Display joined meetings//
-///////////////////////////
+//
+//Display joined meetings
+//
 var currentUser;
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
