@@ -1,46 +1,79 @@
+///////////////////////////
+//Display Bookmarked meetings//
+///////////////////////////
 var currentUser;
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
-        currentUser = db.collection("users").doc(user.uid); //global
+        currentUser = db.collection("users").doc(user.uid);
+        db.collection("users").doc(user.uid)
+            .get()
+            .then(function (doc) {
+                var bookmark = doc.data().meetingsBookmarked;
+                //Pass the data to local storage
+                localStorage.setItem("Bookmarks", bookmark);
+            })
         console.log(currentUser);
-
     } else {
-        // No user is signed in.
         console.log("No user is signed in");
-        window.location.href = "login.html";
     }
 });
 
-function getBookmarks(user) {
-    db.collection("users").doc(user.uid).get()
-        .then(userDoc => {
-            var bookmarks = userDoc.data().bookmarks;
-            console.log(bookmarks);
+function displayMeetings(collection) {
+    let MeetingsTemplate = document.getElementById("meeting-list-template");
 
-            let CardTemplate = document.getElementById("CardTemplate");
-            bookmarks.forEach(thisHikeID => {
-                console.log(thisHikeID);
-                db.collection("Hikes").where("id", "==", thisHikeID).get().then(snap => {
-                    size = snap.size;
-                    queryData = snap.docs;
+    var b = localStorage.getItem("Bookmarks").split(',');
+    console.log(b);
+    var i;
+    for (i = 0; i < b.length; i++) {
 
-                    if (size == 1) {
-                        var doc = queryData[0].data();
-                        var hikeName = doc.name; //gets the name field
-                        var hikeID = doc.id; //gets the unique ID field
-                        var hikeLength = doc.length; //gets the length field
-                        let newCard = CardTemplate.content.cloneNode(true);
-                        newCard.querySelector('.card-title').innerHTML = hikeName;
-                        newCard.querySelector('.card-length').innerHTML = hikeLength + " km";
-                        newCard.querySelector('a').onclick = () => setHikeData(hikeID);
-                        newCard.querySelector('img').src = `./images/${hikeID}.png`;
-                        hikeCardGroup.appendChild(newCard);
-                    } else {
-                        console.log("Query has more than one data")
-                    }
+        db.collection(collection)
+            // .orderBy("timestamp")
+            .doc(b[i])
+            .get()
+            .then(doc => {
+                var meetingID = doc.id;
+                var title = doc.data().title;
+                var creator = doc.data().creator;
+                var date = doc.data().date;
+                var time = doc.data().time;
+                var duration = doc.data().duration;
+                var location = doc.data().location;
+                var people = doc.data().people;
+                var description = doc.data().description;
+                let newcard = MeetingsTemplate.content.cloneNode(true);
 
-                })
 
-            });
-        })
+
+                //update meetings list
+                newcard.querySelector('#title').innerHTML = title;
+                newcard.querySelector('#creator').innerHTML = creator;
+                newcard.querySelector('#date').innerHTML = date;
+                newcard.querySelector('#time').innerHTML = time;
+                newcard.querySelector('#duration').innerHTML = duration;
+
+                //update modal description
+                newcard.querySelector("#modallable").innerHTML = title;
+                newcard.querySelector("#span1").innerHTML = creator;
+                newcard.querySelector("#span2").innerHTML = date;
+                newcard.querySelector("#span3").innerHTML = time;
+                newcard.querySelector("#span4").innerHTML = duration;
+                newcard.querySelector("#span5").innerHTML = people;
+                newcard.querySelector("#span6").innerHTML = location;
+                newcard.querySelector("#span7").innerHTML = description;
+
+
+                //give unique ids list cards and modals
+                newcard.querySelector('#brief-list').setAttribute("id", "brief-list" + i);
+                newcard.querySelector('#detail-modal').setAttribute("id", "detail-modal" + i);
+                newcard.querySelector('#detailbutton').setAttribute("data-bs-target", "#detail-modal" + i);
+
+
+                document.getElementById(collection + "-go-here").appendChild(newcard);
+            })
+
+    }
+
+
 }
+
+displayMeetings("meetings");
