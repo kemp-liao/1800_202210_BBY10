@@ -42,8 +42,6 @@ function displayMeetings(collection) {
                 var description = doc.data().description;
                 let newcard = MeetingsTemplate.content.cloneNode(true);
 
-
-
                 //update meetings list
                 newcard.querySelector('#title').innerHTML = title;
                 newcard.querySelector('#creator').innerHTML = creator;
@@ -67,6 +65,10 @@ function displayMeetings(collection) {
                 newcard.querySelector('#detail-modal').setAttribute("id", "detail-modal" + i);
                 newcard.querySelector('#detailbutton').setAttribute("data-bs-target", "#detail-modal" + i);
 
+                //Quit meetings
+                newcard.querySelector('.quit-button').onclick = () => quit(meetingID);
+                newcard.querySelector('.quit-button').id = 'quit-' + meetingID;
+
 
                 document.getElementById(collection + "-go-here").appendChild(newcard);
             })
@@ -77,3 +79,18 @@ function displayMeetings(collection) {
 }
 
 displayMeetings("meetings");
+
+function quit(meetingID){
+    console.log(meetingID);
+    currentUser.update({
+        meetingsJoined: firebase.firestore.FieldValue.arrayRemove(meetingID)
+    }, {
+        merge: true
+    })
+    .then( () => {
+        console.log("Meeting has been quited");
+        var buttonID = 'quit-' + meetingID;
+        document.getElementById(buttonID).innerText = "Quit Successfully";
+        document.getElementById(buttonID).className = "btn btn-success quit-button"
+    });
+}

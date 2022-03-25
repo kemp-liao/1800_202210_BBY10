@@ -56,6 +56,10 @@ function displayMeetings(collection) {
                 newcard.querySelector('.join-button').onclick = () => join(meetingID);
                 newcard.querySelector('.join-button').id = 'joined-' + meetingID;
 
+                //Save bookmarks
+                newcard.querySelector('i').id = 'saved-' + meetingID;
+                newcard.querySelector('i').onclick = () => saveBookmark(meetingID);
+
                 document.getElementById(collection + "-go-here").appendChild(newcard);
                 i++;
             })
@@ -76,5 +80,19 @@ function join(meetingID){
         var buttonID = 'joined-' + meetingID;
         document.getElementById(buttonID).innerText = "Joined";
         document.getElementById(buttonID).className = "btn btn-success join-button"
+    });
+}
+
+function saveBookmark(meetingID){
+    console.log(meetingID);
+    currentUser.set({
+        bookmarks: firebase.firestore.FieldValue.arrayUnion(meetingID)
+    }, {
+        merge: true
+    })
+    .then( () => {
+        console.log("Meeting has been saved");
+        var iconID = 'saved-' + meetingID;
+        document.getElementById(iconID).innerText = 'bookmark';
     });
 }
