@@ -74,7 +74,7 @@ displayMeetings("meetings");
 function quit(meetingID){
     console.log(meetingID);
     currentUser.update({
-        meetingsJoined: firebase.firestore.FieldValue.arrayRemove(meetingID)
+        bookmarks: firebase.firestore.FieldValue.arrayRemove(meetingID)
     }, {
         merge: true
     })
