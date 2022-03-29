@@ -69,8 +69,6 @@ firebase.auth().onAuthStateChanged(user => {
     }
 });
 
-displayMeetings("meetings");
-
 function quit(meetingID){
     console.log(meetingID);
     currentUser.update({

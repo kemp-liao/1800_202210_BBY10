@@ -82,6 +82,9 @@ map.on('load', () => {
 //Meeting details function
 //
 
+const closem = document.querySelector(".modal-close");
+const subModal = document.querySelector(".submodal-wrap");
+const subModal2 = document.querySelector(".submodal-wrap2");
 
 var currentUser;
 firebase.auth().onAuthStateChanged(user => {
@@ -90,7 +93,12 @@ firebase.auth().onAuthStateChanged(user => {
         console.log(currentUser);
     } else {
         console.log("No user is signed in");
+        subModal.classList.toggle("display-nonem");
     }
+});
+
+closem.addEventListener('click', () => {
+    subModal.classList.toggle("display-nonem");
 });
 
 function displayMeetings(collection) {

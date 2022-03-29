@@ -9,8 +9,9 @@ function displayThreads(collection) {
             snap.forEach(doc => { //iterate thru each doc
                 var title = doc.data().title;   
                 var creator = doc.data().creator;
-                var date = doc.data().timestamp.toDate();
+                var date = doc.data().timestamp.toDate().toDateString();
                 var details = doc.data().details;
+                var threadID = doc.id;
 
                 let newcard = ThreadsTemplate.content.cloneNode(true);
 
@@ -35,6 +36,8 @@ function displayThreads(collection) {
                 // newcard.querySelector('#brief-list').setAttribute("id", "brief-list" + i);
                 // newcard.querySelector('#detail-modal').setAttribute("id", "detail-modal" + i);
                 // newcard.querySelector('#detailbutton').setAttribute("data-bs-target", "#detail-modal" + i);
+
+                newcard.querySelector('.thread-t').href = "Thread.html?name=" + title + "&id=" + threadID;
 
                 document.getElementById(collection + "-go-here").appendChild(newcard);
                 i++;

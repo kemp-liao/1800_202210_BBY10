@@ -41,8 +41,16 @@
     <nav id="navbarPlaceholder"></nav>
 
 
-    
-    <!--List of meetings-->
+    <!--Submission modal-->
+    <div class="submodal-wrap display-nonem">
+        <div class="submodal">
+            <img src="./images/checked.png" alt="">
+            <p>Your reply has been posted!</p>
+            <button class="btnclose modal-close btn btn-secondary">Close</button>
+        </div>
+    </div>
+
+    <!--List of threads-->
     <div class="container">
         <div id="threads-go-here" class=""></div>
     </div>
@@ -51,20 +59,56 @@
 
     <!-- The template for the lists -->
     <template id="thread-list-template">
-        <div class="card border-0 border-bottom p-3" id="brief-list">
+        <div class="card border-0 border-bottom p-5" id="brief-list">
             <div class="card-body">
-                <a class="thread-t"><h5 class="card-title" id="title">Title</h5></a>
-                <h6 class="card-subtitle mb-2 text-muted"><span id="creator">Name</span>&nbsp;&nbsp;<span id="date">Post Date</span>
+                <a href="#" class="thread-t">
+                    <h5 class="card-title" id="title">Title</h5>
+                </a>
+                <h6 class="card-subtitle mb-2 text-muted"><span id="creator">Name</span>&nbsp;&nbsp;<span id="date">Post
+                        Date</span>
                 </h6>
                 <p class="card-text"><span id="details">Details</span></p>
-                <!-- <div class="text-center">
-                    <a href="#" class="btn btn-secondary" role="button" data-bs-toggle="modal"
-                        data-bs-target="#detail-modal" id="detailbutton">Details</a>
-                    <a href="#" class="btn btn-primary" role="button">Join</a>
-                </div> -->
             </div>
         </div>
     </template>
+
+    <!--List of replies-->
+    <div class="container">
+        <div id="thread_replies-go-here" class=""></div>
+    </div>
+
+    <!-- The template for the replies -->
+    <template id="reply-list-template">
+    <div class="card border-0 border-bottom p-3">
+        <div class="card-body">
+            <h6 class="card-title">#<span id="card-number">No.</span></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><span id="creator">Name</span>&nbsp;&nbsp;<span id="date">Post
+                    Date</span>
+            </h6>
+            <p class="card-text"><span id="details">Details</span></p>
+        </div>
+    </div>
+    </template>
+
+    <!--Reply to this thread-->
+
+    <form class="new-reply">
+
+        <!--Details-->
+        <div class="px-5 py-5">
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Detailed description" id="reply"
+                    style="height: 20vh;"></textarea>
+                <label for="floatingTextarea2">Reply to this thread here</label>
+            </div>
+        </div>
+
+        <!--Button-->
+        <div class="text-center">
+            <input class="btn btn-secondary px-3" type="reset" value="Reset">
+            <input class="btn btn-secondary px-3" type="submit" value="Reply" id="submit">
+        </div>
+    </form>
 
 
     <!--Nevigation button-->
@@ -79,7 +123,7 @@
     <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/communityhub.js"></script>
+    <script src="./scripts/thread.js"></script>
 </body>
 
 </html>

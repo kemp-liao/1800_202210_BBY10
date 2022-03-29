@@ -66,5 +66,6 @@ submit.addEventListener('click', (e) => {
 
 closem.addEventListener('click', () => {
     subModal.classList.toggle("display-nonem");
+    window.location.replace("CommunityHub.html");
 });
 

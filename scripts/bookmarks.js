@@ -69,8 +69,6 @@ firebase.auth().onAuthStateChanged(user => {
     }
 });
 
-displayMeetings("meetings");
-
 function quit(meetingID){
     console.log(meetingID);
     currentUser.update({
@@ -81,7 +79,7 @@ function quit(meetingID){
     .then( () => {
         console.log("Meeting has been deleted");
         var buttonID = 'quit-' + meetingID;
-        document.getElementById(buttonID).innerText = "Quit Successfully";
+        document.getElementById(buttonID).innerText = "Delete Successfully";
         document.getElementById(buttonID).className = "btn btn-success quit-button"
         const timeout = setTimeout(() =>{
             location.reload()
