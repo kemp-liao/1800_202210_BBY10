@@ -3,3 +3,8 @@
 node_modules/
 firebaseAPI_SportsGo!.js
 .vscode
+.firebase
+.firebaserc
+404.html
+firebase.json
+firestore.indexes.json
