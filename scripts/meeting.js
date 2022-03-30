@@ -28,6 +28,7 @@ firebase.auth().onAuthStateChanged(user => {
                             var location = doc.data().location;
                             var people = doc.data().people;
                             var description = doc.data().description;
+                            var learning = doc.data().learning;
                             let newcard = MeetingsTemplate.content.cloneNode(true);
             
                             //update meetings list
@@ -36,6 +37,9 @@ firebase.auth().onAuthStateChanged(user => {
                             newcard.querySelector('#date').innerHTML = date;
                             newcard.querySelector('#time').innerHTML = time;
                             newcard.querySelector('#duration').innerHTML = duration;
+                            if(learning){
+                                newcard.querySelector('#learning-session-mark').style.display = "block";
+                            }
             
                             //update modal description
                             newcard.querySelector("#modallable").innerHTML = title;
@@ -46,6 +50,9 @@ firebase.auth().onAuthStateChanged(user => {
                             newcard.querySelector("#span5").innerHTML = people;
                             newcard.querySelector("#span6").innerHTML = location;
                             newcard.querySelector("#span7").innerHTML = description;
+                            if(learning){
+                                newcard.querySelector('#learning-session-mark-modal').style.display = "block";
+                            }
             
             
                             //give unique ids list cards and modals
@@ -59,6 +66,7 @@ firebase.auth().onAuthStateChanged(user => {
             
             
                             document.getElementById("meetings-go-here").appendChild(newcard);
+                            i++;
                         })
             
                 }

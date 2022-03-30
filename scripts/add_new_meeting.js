@@ -84,6 +84,7 @@ const submit = document.querySelector("#submit");
 const closem = document.querySelector(".modal-close");
 const subModal = document.querySelector(".submodal-wrap");
 const subModal2 = document.querySelector(".submodal-wrap2");
+const learningSwitch = document.querySelector("#learning-session");
 
 
 //get the user name and show the name in the title.
@@ -136,10 +137,8 @@ submit.addEventListener('click', (e) => {
                         title: meetingTitle.value,
                         time: meetingTime.value,
                         creator: n,
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-
-
-
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        learning: learningSwitch.checked,
 
                     }).then(() => {
                         newMeeting.reset();
@@ -154,5 +153,6 @@ submit.addEventListener('click', (e) => {
 
 closem.addEventListener('click', () => {
     subModal.classList.toggle("display-nonem");
+    window.location.replace("ListView.html");
 });
 

@@ -17,7 +17,7 @@
     <!-- Boostrap Library JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!--Local CSS-->
     <link href="./styles/style.css" rel="stylesheet">
@@ -57,12 +57,17 @@
     <template id="meeting-list-template">
         <div class="card border-0 border-bottom p-3" id="brief-list">
             <div class="card-body">
-                <h5 class="card-title" id="title">Title</h5>&nbsp;&nbsp;&nbsp;<i class="material-icons">bookmark_border</i>
-                
+                <h5 class="card-title" id="title">Title</h5>&nbsp;&nbsp;&nbsp;<i
+                    class="material-icons">bookmark_border</i>
+
                 <h6 class="card-subtitle mb-2 text-muted"><span id="creator">Name</span>&nbsp;&nbsp;<span
                         id="date">Date</span>
                     <span id="time">Time</span>
                 </h6>
+                <div id="learning-session-mark">
+                    <img src="./images/l.png" class="learning-icon">
+                    <p class="card-text learning-remarks"> This is a learning session</p>
+                </div>
                 <p class="card-text">Location: <span id="list-location"></span></p>
                 <div class="text-center">
                     <a class="btn btn-secondary" role="button" data-bs-toggle="modal" data-bs-target="#detail-modal"
@@ -74,14 +79,19 @@
 
         <!--The modals-->
         <div class="modal fade" id="detail-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="false">
+            aria-labelledby="staticBackdropLabel" aria-hidden="false">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modallable">Modal title</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+
                     <div class="modal-body">
+                        <div class="pb-3" id="learning-session-mark-modal">
+                            <img src="./images/l.png" class="learning-icon">
+                            <p class="card-text learning-remarks"> This is a learning session</p>
+                        </div>
                         <p>Author: <span id="span1"></span></p>
                         <p>Meeting Time: <span id="span2"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="span3"></span></p>
                         <p>Duration: <span id="span4"></span></p>
@@ -94,10 +104,21 @@
                     </div>
     </template>
 
+    <!--Filter Menu-->
+    <div class="submodal-wrap display-nonem">
+        <div class="submodal">
+          <p>Choose your filter</p>
+          <a href="ListView.html"><button class="btn btn-secondary">All Meetings</button></a><br><br>
+          <a href="ListView-Regular.html"><button class="btn btn-secondary">Regular Meetings Only</button></a><br><br>
+          <a href="ListView-Learning.html"><button class="btn btn-secondary">Learning Sessions Only</button></a>
+        </div>
+      </div>
+
 
     <!--Nevigation button-->
     <div id="list-view-button">
         <a href="index.html"><img id="map-pic" src="./images/map.png" title="Map View"></a>
+        <a href="#" onclick="popupFilter()"><img id="filter-pic" src="./images/filter.png" title="Filter"></a>
         <a href="AddNewMeeting.html"><img id="add-pic" src="./images/add.png" title="Add New Meeting"></a>
     </div>
 

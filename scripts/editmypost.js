@@ -26,6 +26,7 @@ firebase.auth().onAuthStateChanged(user => {
                         var location = doc.data().location;
                         var people = doc.data().people;
                         var description = doc.data().description;
+                        var learning = doc.data().learning;
                         let newcard = MeetingsTemplate.content.cloneNode(true);
 
                         //update meetings list
@@ -34,6 +35,9 @@ firebase.auth().onAuthStateChanged(user => {
                         newcard.querySelector('#date').innerHTML = date;
                         newcard.querySelector('#time').innerHTML = time;
                         newcard.querySelector('#duration').innerHTML = duration;
+                        if(learning){
+                            newcard.querySelector('#learning-session-mark').style.display = "block";
+                        }
                         //update modal description
                         newcard.querySelector("#modallable").innerHTML = title;
                         newcard.querySelector("#span1").innerHTML = creator;
@@ -43,6 +47,9 @@ firebase.auth().onAuthStateChanged(user => {
                         newcard.querySelector("#span5").innerHTML = people;
                         newcard.querySelector("#span6").innerHTML = location;
                         newcard.querySelector("#span7").innerHTML = description;
+                        if(learning){
+                            newcard.querySelector('#learning-session-mark-modal').style.display = "block";
+                        }
                         //give unique ids list cards and modals
                         newcard.querySelector('#brief-list').setAttribute("id", "brief-list" + i);
                         newcard.querySelector('#detail-modal').setAttribute("id", "detail-modal" + i);
@@ -119,7 +126,7 @@ firebase.auth().onAuthStateChanged(user => {
                         newcard.querySelector('.delete-thread-button').onclick = () => deleteThread(threadID);
                         newcard.querySelector('.delete-thread-button').id = 'delete-' + threadID;
 
-                        newcard.querySelector('.thread-t').href = "Thread.html?id=" + threadID;
+                        newcard.querySelector('.thread-t').href = "Thread.html?name=" + title + "&id=" + threadID;
         
                         document.getElementById("threads-go-here").appendChild(newcard);
                     }

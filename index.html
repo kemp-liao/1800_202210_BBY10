@@ -17,7 +17,7 @@
   <!-- Boostrap Library JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-  </script>
+    </script>
 
   <!--Local CSS-->
   <link href="./styles/style.css" rel="stylesheet">
@@ -67,6 +67,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            <div class="pb-3" id="learning-session-mark-modal">
+              <img src="./images/l.png" class="learning-icon">
+              <p class="card-text learning-remarks"> This is a learning session</p>
+            </div>
             <p>Author: <span id="span1"></span>&nbsp;<span id="time-stamp"></span></p>
             <p>Meeting Time: <span id="span2"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="span3"></span></p>
             <p>Duration: <span id="span4"></span></p>
@@ -84,15 +88,15 @@
   </template>
 
 
-      <!--Welcome modal-->
-      <div class="submodal-wrap display-nonem">
-        <div class="submodal">
-            <img src="./images/logo.png" alt="">
-            <p>Welcome to SportsGo!</p>
-            <button class="btnclose modal-close btn btn-secondary">Explore</button>
-            <a href="login.html"><button class="btnclose modal-close btn btn-primary">Join Us</button></a>
-        </div>
+  <!--Welcome modal-->
+  <div class="submodal-wrap display-nonem">
+    <div class="submodal">
+      <img src="./images/logo.png" alt="">
+      <p>Welcome to SportsGo!</p>
+      <button class="btnclose modal-close btn btn-secondary">Explore</button>
+      <a href="login.html"><button class="btnclose modal-close btn btn-primary">Join Us</button></a>
     </div>
+  </div>
 
   <!--Footer-->
   <nav id="footerPlaceholder"></nav>
@@ -103,7 +107,7 @@
   <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/map.js"></script>
-  
+
 </body>
 
 </html>

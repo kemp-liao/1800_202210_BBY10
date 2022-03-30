@@ -120,6 +120,7 @@ function displayMeetings(collection) {
                 var description = doc.data().description;
                 var logitude = doc.data().logitude;
                 var latitude = doc.data().latitude;
+                var learning = doc.data().learning;
                 //var timestamp = doc.data().timestamp;
                 let newcard = MeetingsTemplate.content.cloneNode(true);
                 
@@ -135,6 +136,9 @@ function displayMeetings(collection) {
                 newcard.querySelector("#span5").innerHTML = people;
                 newcard.querySelector("#span6").innerHTML = location;
                 newcard.querySelector("#span7").innerHTML = description;
+                if(learning){
+                    newcard.querySelector('#learning-session-mark-modal').style.display = "block";
+                }
                 //newcard.querySelector("#time-stamp").innerHTML = timestamp;
 
                 //Join function

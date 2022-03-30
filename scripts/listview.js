@@ -14,7 +14,7 @@ function displayMeetings(collection) {
 
     db.collection(collection).get()
     db.collection(collection)
-        .orderBy("timestamp")
+        .orderBy("timestamp", "desc")
         .get()
         .then(snap => {
             var i = 1;
@@ -28,6 +28,7 @@ function displayMeetings(collection) {
                 var location = doc.data().location;
                 var people = doc.data().people;
                 var description = doc.data().description;
+                var learning = doc.data().learning;
                 let newcard = MeetingsTemplate.content.cloneNode(true);
 
 
@@ -38,6 +39,11 @@ function displayMeetings(collection) {
                 newcard.querySelector('#date').innerHTML = date;
                 newcard.querySelector('#time').innerHTML = time;
                 newcard.querySelector('#list-location').innerHTML = location;
+                if(learning){
+                    newcard.querySelector('#learning-session-mark').style.display = "block";
+                }
+
+
                 //update modal description
                 newcard.querySelector("#modallable").innerHTML = title;
                 newcard.querySelector("#span1").innerHTML = creator;
@@ -47,6 +53,11 @@ function displayMeetings(collection) {
                 newcard.querySelector("#span5").innerHTML = people;
                 newcard.querySelector("#span6").innerHTML = location;
                 newcard.querySelector("#span7").innerHTML = description;
+                if(learning){
+                    newcard.querySelector('#learning-session-mark-modal').style.display = "block";
+                }
+
+
                 //give unique ids list cards and modals
                 newcard.querySelector('#brief-list').setAttribute("id", "brief-list" + i);
                 newcard.querySelector('#detail-modal').setAttribute("id", "detail-modal" + i);
@@ -95,4 +106,11 @@ function saveBookmark(meetingID){
         var iconID = 'saved-' + meetingID;
         document.getElementById(iconID).innerText = 'bookmark';
     });
+}
+
+const subModal = document.querySelector(".submodal-wrap");
+const subModal2 = document.querySelector(".submodal-wrap2");
+
+function popupFilter(){
+    subModal.classList.toggle("display-nonem");   
 }
