@@ -123,7 +123,7 @@ function displayMeetings(collection) {
                 var learning = doc.data().learning;
                 //var timestamp = doc.data().timestamp;
                 let newcard = MeetingsTemplate.content.cloneNode(true);
-                
+
                 //create modal via js
                 var myModal = new bootstrap.Modal(newcard.querySelector("#detail-modal"));
 
@@ -136,7 +136,7 @@ function displayMeetings(collection) {
                 newcard.querySelector("#span5").innerHTML = people;
                 newcard.querySelector("#span6").innerHTML = location;
                 newcard.querySelector("#span7").innerHTML = description;
-                if(learning){
+                if (learning) {
                     newcard.querySelector('#learning-session-mark-modal').style.display = "block";
                 }
                 //newcard.querySelector("#time-stamp").innerHTML = timestamp;
@@ -151,12 +151,12 @@ function displayMeetings(collection) {
 
                 document.getElementById(collection + "-go-here").appendChild(newcard);
 
-                 //add markers to the map
-                 const marker = new mapboxgl.Marker({
-                    color: "#002676",
-                    draggable: false
+                //add markers to the map
+                const marker = new mapboxgl.Marker({
+                        color: "#0031DD",
+                        draggable: false
 
-                }).setLngLat([logitude, latitude])
+                    }).setLngLat([logitude, latitude])
                     .setPopup(new mapboxgl.Popup({
                         closeOnClick: true,
                         closeButton: false,
@@ -164,10 +164,10 @@ function displayMeetings(collection) {
                     }).on('open', () => {
                         console.log('popup was opened');
                         myModal.toggle(); // toggle the modal
-                        }))
+                    }))
                     .addTo(map);
-                    
-                
+
+
                 i++;
             })
         })
@@ -176,17 +176,17 @@ function displayMeetings(collection) {
 displayMeetings("meetings");
 
 
-function join(meetingID){
+function join(meetingID) {
     console.log(meetingID);
     currentUser.set({
-        meetingsJoined: firebase.firestore.FieldValue.arrayUnion(meetingID)
-    }, {
-        merge: true
-    })
-    .then( () => {
-        console.log("Meeting has been joined");
-        var buttonID = 'joined-' + meetingID;
-        document.getElementById(buttonID).innerText = "Joined";
-        document.getElementById(buttonID).className = "btn btn-success join-button"
-    });
+            meetingsJoined: firebase.firestore.FieldValue.arrayUnion(meetingID)
+        }, {
+            merge: true
+        })
+        .then(() => {
+            console.log("Meeting has been joined");
+            var buttonID = 'joined-' + meetingID;
+            document.getElementById(buttonID).innerText = "Joined";
+            document.getElementById(buttonID).className = "btn btn-success join-button"
+        });
 }

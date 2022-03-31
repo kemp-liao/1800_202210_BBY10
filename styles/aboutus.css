@@ -2,8 +2,8 @@
     width: 100vw;
     height: 70vh;
     background: linear-gradient(to bottom,
-            #0c6081 0%,
-            #0c6081 20%);
+            orange 0%,
+            orange 20%);
     text-align: center;
 }
 
@@ -13,62 +13,92 @@
     margin: 5% 10% 5% 10%;
 }
 
-.card1,
-.card2 {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: 8px;
-}
-
-.card1 {
-    margin-right: -5%;
-}
-
-.card1 img {
-    width: 90%;
-}
-
-.card2 {
-    margin-left: 10%;
-}
-
-.card2 img {
-    width: 90%;
-    margin: 0 5% 0 5%;
-}
-
-#mission {
-    margin-top: 3%;
-    background-color: #0c6081;
-    color: #87CEEB;
-}
-
-#mission p,
-#story p {
-    color: white;
-}
-
-#story {
-    margin-top: 3%;
-    color: #87CEEB;
-}
-
-#quote {
-    margin-top: 8%;
-}
-
 #leadership h2 {
     margin-bottom: -3%;
+    margin-top: 8%;
+    font-weight: bold;
+    color: orange;
 }
 
-@media screen and (max-width: 701px) {
-    .column {
-        width: 60%;
-        display: block;
-        margin: 5% 5% 5% 18%;
+@media screen and (max-width: 1000px) {
+    #mission {
+        margin-top: 3%;
+        background-color: orange;
+        color: white;
     }
 
-    #card1 {
-        height: 20%;
+    #mission p,
+    #story p {
+        color: white;
     }
 
+    #story {
+        margin-top: 5%;
+        color: white;
+    }
+
+    #wendy img,
+    #kemp img {
+        width: 370px;
+        height: 400px;
+        margin: 5px;
+    }
+
+    #leadership h2 {
+        margin-top: 10%;
+        margin-bottom: 3%;
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1600px) {
+    #mission {
+        background-color: orange;
+        color: white;
+        margin-top: 3%;
+    }
+
+    #mission p,
+    #story p {
+        color: white;
+        font-size: 15pt;
+    }
+
+    #story {
+        margin-top: 2%;
+        color: white;
+    }
+
+    #leadership {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    #leadership h2 {
+        text-align: center;
+        margin-left: 90%;
+    }
+
+    #wendy img,
+    #kemp img {
+        width: 370px;
+        height: 400px;
+        margin: 5px;
+    }
+
+    #wendy {
+        grid-column: 1 / span 1;
+        margin-top: 5%;
+        margin-left: 20%;
+    }
+
+    #kemp {
+        grid-column: 2 / span 2;
+        margin-top: 5%;
+        margin-right: 20%;
+    }
+
+    #leadership h3,
+    #leadership .title {
+        margin-top: 3%;
+    }
 }
