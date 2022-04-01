@@ -66,8 +66,9 @@ function displayReplies(collection) {
                     newcard.querySelector('#card-number').innerHTML = i;
 
                     document.getElementById(collection + "-go-here").appendChild(newcard);
+                    i++;
                 }
-                i++;
+
             })
         })
 }

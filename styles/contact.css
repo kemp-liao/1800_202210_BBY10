@@ -47,3 +47,9 @@ address a:hover {
     background-color: orange;
     border: orange;
 }
+
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

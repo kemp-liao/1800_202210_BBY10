@@ -20,6 +20,10 @@
     color: orange;
 }
 
+#leadership{
+    background-color: white;
+}
+
 @media screen and (max-width: 1000px) {
     #mission {
         margin-top: 3%;
@@ -45,12 +49,13 @@
     }
 
     #leadership h2 {
-        margin-top: 10%;
+        margin-top: 3%;
+        padding-top: 5%;
         margin-bottom: 3%;
     }
 }
 
-@media screen and (min-width: 1000px) and (max-width: 1600px) {
+@media screen and (min-width: 1001px) {
     #mission {
         background-color: orange;
         color: white;
