@@ -1,22 +1,28 @@
+.btn-info {
+    background-color: orange !important;
+    border: orange;
+}
+
 @media screen and (min-width: 701px) and (max-width: 1600px) {
 
     #profile-container {
         display: grid;
-        grid-template-columns: 30% 70%;
-        grid-template-rows: 10% 90%;
-        padding: 5% 4% 0 4%;
+        grid-template-columns: 40% 60%;
+        grid-template-rows: 10% 50%;
+        padding: 5% 10% 0 4%;
     }
 
     #profile-container img {
         grid-column: 1 / span 1;
         grid-row: 1 / span 2;
-        width: 90%;
+        width: 65%;
+        margin: 2% 0 0 20%;
     }
 
     #profile-container h1 {
         grid-column: 2 / span 1;
         grid-row: 1;
-        margin-bottom: 40%;
+        margin-left: 5%;
     }
 
     #profile-container label {
@@ -25,22 +31,62 @@
 
     #profile-container button {
         margin-top: -3%;
+        color: white;
+    }
+
+    #personalInfoFields {
+        margin-top: 5%;
+        margin-left: 5%;
+    }
+
+    #meetings-catelog .btn {
+        width: 85%;
+        height: 90px;
+        margin: auto;
+        font-size: 15pt;
+        color: white;
+    }
+
+    #meetings-catelog {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    #meetings-catelog #joined-meetings {
+        text-align: center;
+        grid-column: 1 / span 1;
+        margin-left: 15%;
+    }
+
+    #meetings-catelog #interested-meetings {
+        text-align: center;
+        grid-column: 2 / span 1;
+        margin: 0 -10% 0 -10%;
+    }
+
+    #my-posts {
+        text-align: center;
+        margin-bottom: 3%;
+        grid-column: 3 / span 1;
+        margin-right: 15%;
     }
 }
 
 @media screen and (max-width: 700px) {
     #profile-container img {
-        width: 40%;
+        width: 30%;
         height: auto;
         display: block;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 5%;
     }
 
     #profile-container h1 {
         margin: 3% 0 1% 0;
         text-align: center;
-
     }
 
     #profile-container h1,
@@ -54,6 +100,7 @@
 
     #profile-container button {
         margin-top: -5%;
+        color: white;
     }
 
     #meetings-catelog .btn {
@@ -61,6 +108,7 @@
         height: 70px;
         margin: 3% 0 3% 0;
         font-size: 15pt;
+        color: white;
     }
 
     #meetings-catelog #joined-meetings {
@@ -70,16 +118,11 @@
 
     #meetings-catelog #interested-meetings {
         text-align: center;
-        margin-bottom: 3%;
     }
 
     #my-posts {
         text-align: center;
         margin-bottom: 3%;
     }
-
-    /* #meetings-catelog #past-meetings {
-        text-align: center;
-    } */
 
 }
