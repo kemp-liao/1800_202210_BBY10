@@ -4,6 +4,9 @@
     background: linear-gradient(to bottom,
             orange 0%,
             orange 20%);
+
+}
+#main-wrapper {
     text-align: center;
 }
 
