@@ -1,3 +1,6 @@
+const closem = document.querySelector(".modal-close");
+const subModal = document.querySelector(".submodal-wrap");
+
 function writeReview() {
     let Name = document.getElementById("name").value;
     let Email = document.getElementById("email").value;
@@ -24,7 +27,7 @@ function writeReview() {
                         message: Message,
                         timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     }).then(() => {
-                        window.location.href = "thanks.html"; //new line added
+                        subModal.classList.toggle("display-nonem");
                     })
                 })
 
@@ -35,3 +38,8 @@ function writeReview() {
     });
 
 }
+
+closem.addEventListener('click', () => {
+    subModal.classList.toggle("display-nonem");
+    window.location.replace("index.html");
+});

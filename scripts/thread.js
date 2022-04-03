@@ -12,6 +12,8 @@ const threadTitle = params.searchParams.get("name");
 
 
 function displayThreads(collection) {
+    document.title = "Sports Go! - " + threadTitle;
+
     let ThreadsTemplate = document.getElementById("thread-list-template");
 
     db.collection(collection)
@@ -32,7 +34,6 @@ function displayThreads(collection) {
             newcard.querySelector('#details').innerHTML = details;
 
             document.getElementById(collection + "-go-here").appendChild(newcard);
-            // i++;
         })
 
 }
