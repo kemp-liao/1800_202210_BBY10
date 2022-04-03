@@ -15,7 +15,7 @@ function writeReview() {
             currentUser.get()
                 .then(userDoc => {
                     var userEmail = userDoc.data().email;
-                    db.collection("Emails").add({
+                    db.collection("feedbacks").add({
                         userID: userID,
                         name: Name,
                         email: Email,

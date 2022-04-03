@@ -2,7 +2,7 @@ function displayThreads(collection) {
     let ThreadsTemplate = document.getElementById("thread-list-template");
 
     db.collection(collection)
-        .orderBy("timestamp")
+        .orderBy("timestamp", "desc")
         .get()
         .then(snap => {
             var i = 1;
