@@ -9,6 +9,7 @@
 Our app, SportsGo!, serves as a community hub and a search engine for modern busy individuals to find people to play sports together. Modern people are too busy with their lives that it is quite hard to gather friends or family whenever they have leisure time. This app will help users to find random people to play sports together to balance and enjoy their lives. Users can post sports meetings or free learning & teaching sessions, and socialize with other people.
 
 Co-founder & Coder - Kemp Liao
+
 Co-founder & Designer - Wendy Kong
 
 Demo URL - https://sportsgo-682a6.web.app/
@@ -22,15 +23,17 @@ Technologies used for this project:
 * Mapbox Map API
 
 ## References
-* Mapbox API
-We use Mapbox API to display map, search text address, and convert text address to geo-coordinates.
-* Flaticon
-Most of the icons in our website are from Flaticon, the sources are marked in the contents section.
-* Bootstrap
-Most of the responsive part are using Bootstrap v5.1.
-* Firebase
-We use firebase to store the data, manage authentications, and deploy the website.
+* Mapbox API  
+We use Mapbox API to display map, search text address, and convert text address to geo-coordinates.  
 
+* Flaticon  
+Most of the icons in our website are from Flaticon, the sources are marked in the contents section.  
+
+* Bootstrap  
+Most of the responsive part are using Bootstrap v5.1.  
+
+* Firebase  
+We use firebase to store the data, manage authentications, and deploy the website.  
 
 ## Contents
 Content of the project folder:
