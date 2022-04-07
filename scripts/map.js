@@ -1,3 +1,7 @@
+//////////////////////////////
+//Main function for homepage//
+//////////////////////////////
+
 //Start a map
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2VtdHVtIiwiYSI6ImNsMDJ1cmRkMDB3dG0zb3J5ZG94bnl5MHMifQ.a3eJ7aW4pIu0NFXj70NMpQ';
 const map = new mapboxgl.Map({
@@ -9,9 +13,6 @@ const map = new mapboxgl.Map({
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
-
-
-
 map.on('load', () => {
 
     // Load an image from an external URL.
@@ -175,7 +176,7 @@ function displayMeetings(collection) {
 
 displayMeetings("meetings");
 
-
+//Join button function
 function join(meetingID) {
     console.log(meetingID);
     currentUser.set({

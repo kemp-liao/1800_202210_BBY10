@@ -10,7 +10,7 @@ const threadID = params.searchParams.get("id");
 const threadTitle = params.searchParams.get("name");
 
 
-
+//Display the original thread
 function displayThreads(collection) {
     document.title = "Sports Go! - " + threadTitle;
 
@@ -40,6 +40,7 @@ function displayThreads(collection) {
 
 displayThreads("threads");
 
+//Display the replies related to this thread
 function displayReplies(collection) {
     let ThreadsTemplate = document.getElementById("reply-list-template");
 
@@ -88,7 +89,6 @@ submit.addEventListener('click', (e) => {
                 .get()
                 .then(function (doc) {
                     var n = doc.data().name;
-                    //console.log(n);
                     db.collection('thread_replies').doc().set({
                         creator_id: user.uid,
                         threadID: threadID,
@@ -102,11 +102,12 @@ submit.addEventListener('click', (e) => {
                     });
                 })
         } else {
-            // subModal2.classList.toggle("display-nonem2");
+
         }
     });
 });
 
+//Display modal
 closem.addEventListener('click', () => {
     subModal.classList.toggle("display-nonem");
     location.reload()

@@ -46,7 +46,6 @@ submit.addEventListener('click', (e) => {
                 .get()
                 .then(function (doc) {
                     var n = doc.data().name;
-                    //console.log(n);
                     db.collection('threads').doc().set({
                         creator_id: user.uid,
                         details: threadDetails.value,
@@ -59,13 +58,13 @@ submit.addEventListener('click', (e) => {
                     });
                 })
         } else {
-            // subModal2.classList.toggle("display-nonem2");
         }
     });
 });
 
+//Display modal
 closem.addEventListener('click', () => {
     subModal.classList.toggle("display-nonem");
-    window.location.replace("CommunityHub.html");
+    window.location.replace("community-hub.html");
 });
 

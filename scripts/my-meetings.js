@@ -77,6 +77,7 @@ firebase.auth().onAuthStateChanged(user => {
     }
 });
 
+//Quit function
 function quit(meetingID){
     console.log(meetingID);
     currentUser.update({

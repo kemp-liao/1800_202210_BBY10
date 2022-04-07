@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Go! - ListView - Regular Meetings Only</title>
+    <title>SportsGo! - List View - Learning Sessions Only</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -17,7 +17,7 @@
     <!-- Boostrap Library JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!--Local CSS-->
     <link href="./styles/style.css" rel="stylesheet">
@@ -107,9 +107,10 @@
     <!--Filter Menu-->
     <div class="submodal-wrap display-nonem">
         <div class="submodal">
-            <a href="ListView.html"><button class="btn btn-secondary">All Meetings</button></a><br><br>
-            <a href="ListView-Regular.html"><button class="btn btn-secondary">Regular Meetings Only</button></a><br><br>
-            <a href="ListView-Learning.html"><button class="btn btn-secondary">Learning Sessions Only</button></a>
+            <p>Choose your filter</p>
+            <a href="list-view.html"><button class="btn btn-secondary">All Meetings</button></a><br><br>
+            <a href="list-view-regular.html"><button class="btn btn-secondary">Regular Meetings Only</button></a><br><br>
+            <a href="list-view-learning.html"><button class="btn btn-secondary">Learning Sessions Only</button></a>
         </div>
     </div>
 
@@ -118,7 +119,7 @@
     <div id="list-view-button">
         <a href="index.html"><img id="map-pic" src="./images/map.png" title="Map View"></a>
         <a href="#" onclick="popupFilter()"><img id="filter-pic" src="./images/filter.png" title="Filter"></a>
-        <a href="AddNewMeeting.html"><img id="add-pic" src="./images/add.png" title="Add New Meeting"></a>
+        <a href="add-new-meeting.html"><img id="add-pic" src="./images/add.png" title="Add New Meeting"></a>
     </div>
 
     <!--Footer-->
@@ -127,7 +128,7 @@
     <!--Local JS-->
     <script src="./scripts/firebaseAPI_SportsGo!.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/listview-regular.js"></script>
+    <script src="./scripts/listview-learning.js"></script>
 </body>
 
 </html>

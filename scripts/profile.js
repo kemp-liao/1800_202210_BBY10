@@ -1,3 +1,4 @@
+//Update profile function
 function populateInfo() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
@@ -31,7 +32,6 @@ function populateInfo() {
     });
 }
 
-//call the function to run it 
 populateInfo();
 
 function editUserInfo() {

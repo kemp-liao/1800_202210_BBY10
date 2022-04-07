@@ -59,10 +59,6 @@ firebase.auth().onAuthStateChanged(user => {
                         newcard.querySelector('.delete-button').onclick = () => deleteMeeting(meetingID);
                         newcard.querySelector('.delete-button').id = 'delete-' + meetingID;
         
-                        // //Save bookmarks
-                        // newcard.querySelector('i').id = 'saved-' + meetingID;
-                        // newcard.querySelector('i').onclick = () => saveBookmark(meetingID);
-        
                         document.getElementById("meetings-go-here").appendChild(newcard);
                         i++;
                     }
@@ -75,6 +71,7 @@ firebase.auth().onAuthStateChanged(user => {
     }
 });
 
+//Delete meeting function
 function deleteMeeting(meetingID){
     console.log(meetingID);
     db.collection("meetings").doc(meetingID).delete()
@@ -139,6 +136,7 @@ firebase.auth().onAuthStateChanged(user => {
     }
 });
 
+//Delete thread function
 function deleteThread(threadID){
     console.log(threadID);
     db.collection("thread_replies")
@@ -213,6 +211,7 @@ firebase.auth().onAuthStateChanged(user => {
     }
 });
 
+//Delete reply function
 function deleteReply(replyID){
     console.log(replyID);
     db.collection("thread_replies").doc(replyID).delete()

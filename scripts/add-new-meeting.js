@@ -7,11 +7,6 @@ const map = new mapboxgl.Map({
     zoom: 9
 });
 
-
-// const marker = new mapboxgl.Marker() // Initialize a new marker
-// .setLngLat([-122.25948, 37.87221]) // Marker [lng, lat] coordinates
-// .addTo(map); // Add the marker to the map
-
 const geocoder = new MapboxGeocoder({
     // Initialize the geocoder
     accessToken: mapboxgl.accessToken, // Set the access token
@@ -124,7 +119,6 @@ submit.addEventListener('click', (e) => {
                 .get()
                 .then(function (doc) {
                     var n = doc.data().name;
-                    //console.log(n);
                     db.collection('meetings').doc().set({
                         creator_id: user.uid,
                         date: meetingDate.value,
@@ -146,13 +140,13 @@ submit.addEventListener('click', (e) => {
                     });
                 })
         } else {
-            // subModal2.classList.toggle("display-nonem2");
         }
     });
 });
 
+//Display modal
 closem.addEventListener('click', () => {
     subModal.classList.toggle("display-nonem");
-    window.location.replace("ListView.html");
+    window.location.replace("list-view.html");
 });
 

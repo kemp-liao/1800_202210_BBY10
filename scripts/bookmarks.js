@@ -15,7 +15,6 @@ firebase.auth().onAuthStateChanged(user => {
                 var i;
                 for (i = 0; i < bm.length; i++) {
                     db.collection("meetings")
-                        // .orderBy("timestamp")
                         .doc(bm[i])
                         .get()
                         .then(doc => {
@@ -76,6 +75,7 @@ firebase.auth().onAuthStateChanged(user => {
     }
 });
 
+//Quit meeting
 function quit(meetingID){
     console.log(meetingID);
     currentUser.update({

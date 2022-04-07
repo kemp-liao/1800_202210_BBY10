@@ -1,6 +1,8 @@
+//Successful modal
 const closem = document.querySelector(".modal-close");
 const subModal = document.querySelector(".submodal-wrap");
 
+//Write feedback
 function writeReview() {
     let Name = document.getElementById("name").value;
     let Email = document.getElementById("email").value;
@@ -39,6 +41,7 @@ function writeReview() {
 
 }
 
+//Display modal
 closem.addEventListener('click', () => {
     subModal.classList.toggle("display-nonem");
     window.location.replace("index.html");

@@ -1,4 +1,4 @@
-
+//Populate meetings
 var currentUser;
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
@@ -83,6 +83,7 @@ function displayMeetings(collection) {
 
 displayMeetings("meetings");
 
+//Join button function
 function join(meetingID) {
     console.log(meetingID);
     currentUser.set({
@@ -98,6 +99,7 @@ function join(meetingID) {
         });
 }
 
+//Bookmark function
 function saveBookmark(meetingID) {
     console.log(meetingID);
     currentUser.set({
@@ -112,6 +114,7 @@ function saveBookmark(meetingID) {
         });
 }
 
+//Display modals
 const subModal = document.querySelector(".submodal-wrap");
 const subModal2 = document.querySelector(".submodal-wrap2");
 
