@@ -2,8 +2,8 @@
 
 * [General info](#general-info)
 * [Technologies](#technologies)
-* [References](#reference)
-* [Contents](#content)
+* [References](#references)
+* [Contents](#contents)
 
 ## General Info
 Our app, SportsGo!, serves as a community hub and a search engine for modern busy individuals to find people to play sports together. Modern people are too busy with their lives that it is quite hard to gather friends or family whenever they have leisure time. This app will help users to find random people to play sports together to balance and enjoy their lives. Users can post sports meetings or free learning & teaching sessions, and socialize with other people.
